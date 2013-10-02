@@ -1,0 +1,79 @@
+.date-input{
+    font-size:15px;
+    line-height: 19px;
+    border: 1px solid #ccc;
+    width:180px;
+    margin:10px 0;
+}
+
+.datepicker table, .timepicker table{
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.datepicker table, .datepicker ul, .timepicker table, .timepicker ul{
+    float:left;
+    margin:5px 0;
+    padding:0;
+    width:100%;
+}
+
+.datepicker li, .timepicker li{
+    float:left;
+    width:15%;
+    display:inline-block;
+    margin:0;
+    padding:0;
+    cursor:pointer;
+    text-align: center;
+    font-weight:bold;
+    color:#444;
+}
+
+.datepicker li.title, .timepicker li.title{
+    width:40%;
+}
+
+.datepicker td, .datepicker th, .timepicker td, .timepicker th {
+    padding:5px 7px; color:#ccc; text-align: center;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.datepicker th, .timepicker th {color:#444; padding: 2px;}
+
+.datepicker tr {border-bottom:1px solid #777;}
+.datepicker tr:first-child, tr:last-child{border-color:#eee;}
+.datepicker tr.current {background-color: #ceeaff;}
+
+.datepicker td.active:hover, .datepicker td.active.selected {color: #fff; background-color: #8fccff; cursor:pointer;}
+.datepicker td.active {color: #222;}
+.datepicker td.today  {background-color: #fff;}
+
+
+.timepicker td{color:#222;}
+.timepicker tr{border-bottom: 1px solid #777;}
+.timepicker td.active:hover, .timepicker td.active.selected {color: #fff; background-color: #8fccff; cursor:pointer;}
+
+.datepicker div.selected, .timepicker div.selected{
+    margin-top:5px;
+    color:#444;
+    font-weight:bold;
+    float:left;
+    width:100%;
+    text-align: center;
+}
+
+/* small screens spread 12 time cells over 2 rows 100/6 = 16.66..8% */
+
+@media screen and (max-width: 480px) {
+    body {
+        overflow: hidden;
+    }
+
+    .timepicker td {
+        float:left;
+        display: block;
+        width:16.66668%;
+    }
+}

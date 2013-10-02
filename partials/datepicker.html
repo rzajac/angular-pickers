@@ -1,0 +1,38 @@
+<div>
+    <div ng-switch="hasTouch" ng-click="datePicker.init()">
+        <input ng-switch-when="false" class="date-input" type="text" ng-disabled="showModal" value="{{value | dateFormat}}"/>
+        <div ng-switch-when="true" class="date-input" ng-click="datePicker.init()">{{value | dateFormat}}</div>
+    </div>
+    <div class="modal-wrapper" ng-class="{show: showModal}">
+        <div class="modal-inner">
+            <ul class="modal-header" ng-click="hideModal()">
+                <li class="title">Set date</li>
+            </ul>
+            <div class="modal-content">
+                <div class="datepicker">
+                    <ul>
+                        <li ng-click="datePicker.init(0,-1)">&lt;&lt;</li>
+                        <li ng-click="datePicker.init(-1,0)">&lt;</li>
+                        <li class="title" ng-click="datePicker.today()">{{datePicker.viewTitle}}</li>
+                        <li ng-click="datePicker.init(1,0)">&gt;</li>
+                        <li ng-click="datePicker.init(0,1)">&gt;&gt;</li>
+                    </ul>
+                    <table>
+                        <tr>
+                            <th ng-repeat="day in datePicker.daysOfWeek">{{day}}</th>
+                        </tr>
+                        <tr ng-repeat="week in datePicker.weeks" ng-class="{current: week.current}">
+                            <td ng-repeat="day in week.days" ng-click="datePicker.setSelected(day)" ng-class="{today : day.today, active: day.active, selected: day.selected}">{{day.day}}</td>
+                        </tr>
+                    </table>
+                    <div class="selected">{{datePicker.selected | dateFormat}}</div>
+                </div>
+            </div>
+            <ul class="modal-footer">
+                <li ng-click="hideModal()">Cancel</li>
+                <li ng-click="datePicker.select()">Set</li>
+            </ul>
+        </div>
+        <div ng-click="hideModal()" class="modal-close"></div>
+    </div>
+</div>

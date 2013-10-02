@@ -1,0 +1,42 @@
+<div>
+    <div ng-switch="hasTouch" ng-model="value">
+        <input ng-switch-when="false" class="date-input" type="text" ng-click="timePicker.init()" ng-disabled="showModal" value="{{value | timeFormat}}"/>
+        <div ng-switch-when="true" class="date-input" ng-click="timePicker.init()">{{value | timeFormat}}</div>
+    </div>
+    <div class="modal-wrapper" ng-class="{show: showModal}">
+        <div class="modal-inner">
+            <ul class="modal-header" ng-click="hideModal()">
+                <li class="title">Set time</li>
+            </ul>
+            <div class="modal-content">
+                <div class="timepicker">
+                    <ul>
+                        <li ng-click="timePicker.init(0,-1)">&lt;&lt;</li>
+                        <li ng-click="timePicker.init(-1,0)">&lt;</li>
+                        <li class="title" ng-click="timePicker.now()">Now</li>
+                        <li ng-click="timePicker.init(1,0)">&gt;</li>
+                        <li ng-click="timePicker.init(0,1)">&gt;&gt;</li>
+                    </ul>
+                    <table>
+                        <tr>
+                            <td ng-repeat="hour in timePicker.clock.hours" ng-click="timePicker.setSelected('h', hour)" class="active" ng-class="{selected: hour.selected}">{{hour.value}}</td>
+                        </tr>
+                        <tr>
+                            <td ng-repeat="minute in timePicker.clock.minutes" ng-click="timePicker.setSelected('m', minute)" class="active" ng-class="{selected: minute.selected}">{{minute.value}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" ng-repeat="period in timePicker.clock.periods" ng-click="timePicker.setSelected('p', period)" ng-class="{selected: period.selected, active: period.value.length}">{{timePicker.meridiem[period.value]}}</td>
+                            <td colspan="8"></td>
+                        </tr>
+                    </table>
+                    <div class="selected">{{timePicker.selected | timeFormat}}</div>
+                </div>
+            </div>
+            <ul class="modal-footer">
+                <li ng-click="hideModal()">Cancel</li>
+                <li ng-click="timePicker.select()">Set</li>
+            </ul>
+        </div>
+        <div ng-click="hideModal()" class="modal-close"></div>
+    </div>
+</div>
