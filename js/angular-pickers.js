@@ -1,14 +1,14 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [])
+angular.module('angPickers', [])
     .constant('CONFIG', {
         FORMATS: {
             DATE: 'D MMM YYYY',
             TIME: 'h:mmA'
         }
     })
-    .controller('myCtrl', ['$scope', function($scope) {
+    .controller('angPickersCtrl', ['$scope', function($scope) {
 
         // a single date time value
         $scope.myDateTime = new Date().getTime();
